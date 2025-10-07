@@ -166,7 +166,6 @@ const CardNav = ({
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
-
   return (
     <div className={`card-nav-container ${className}`}>
       <GlassSurface

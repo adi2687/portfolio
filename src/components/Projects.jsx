@@ -283,7 +283,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                           className="card-link live-link"
-                          title="Live Demo"
+                          title="Live"
                         >
                           <FaExternalLinkAlt />
                           <div className="link-ripple"></div>
