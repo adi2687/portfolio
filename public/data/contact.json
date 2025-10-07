@@ -1,0 +1,38 @@
+{
+  "personal": {
+    "name": "Aditya Kurani",
+    "title": "Software Engineering Student",
+    "email": "adityakurani26@gmail.com",
+    "phone": "+91 9413230180",
+    "location": "IIIT Nagpur, India",
+    "website": "aditya_kurani_portfolio.com"
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/AdityaKurani",
+      "username": "AdityaKurani"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/AdityaKurani",
+      "username": "AdityaKurani"
+    },
+    "leetcode": {
+      "url": "https://leetcode.com/AdityaKurani",
+      "username": "AdityaKurani"
+    }
+  },
+  "availability": {
+    "status": "Open to opportunities",
+    "internships": true,
+    "fullTime": false,
+    "freelance": true,
+    "remote": true
+  },
+  "interests": [
+    "Full-stack Development",
+    "AI/ML Applications",
+    "Backend Optimization",
+    "System Design",
+    "Open Source Contributions"
+  ]
+}

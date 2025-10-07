@@ -1,0 +1,241 @@
+[
+  {
+    "title": "NOVA",
+    "description": "An AI-powered personal assistant with voice control, app management, system controls, Google Calendar integration, image analysis, real-time translation, chatbot, search capabilities, music control, and productivity automation. Experience hands-free digital interaction with natural language understanding and personalized assistance.",
+    "tech": [
+      "Python",
+      "Google API",
+      "Google calendar API",
+      "Google maps API",
+      "pyttsx3",
+      "SpeechRecognition",
+      "Google gemini api"
+    ],
+    "features": [
+      "Voice-controlled interface with natural language processing",
+      "Smart calendar management with Google Calendar integration",
+      "Real-time translation between multiple languages",
+      "Image analysis and object recognition",
+      "System controls for automation and productivity",
+      "Music and media playback control",
+      "Web search and information retrieval",
+      "Personalized responses using machine learning"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/Nova",
+      "live": false,
+      "linkedin": "https://www.linkedin.com/posts/aditya-kurani_ai-innovation-nextgentech-activity-7290479530417258496-9HFh?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
+    },
+    "featured": true,
+    "category": "ai",
+    "icon": "fas fa-robot",
+    "image": "/nova.png",
+    "video": "/novavideo.mp4"
+  },
+  {
+    "title": "Outfit-AI Mobile",
+    "description": "A React Native mobile app version of Outfit-AI, featuring weather-based outfit recommendations, AI-powered fashion advice, digital wardrobe management, and shopping integration. The app provides a seamless mobile experience with offline capabilities and push notifications.",
+    "tech": [
+      "React Native",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Gemini AI",
+      "Socket.io",
+      "Expo"
+    ],
+    "features": [
+      "Mobile-optimized interface with smooth animations",
+      "Offline access to saved outfits and wardrobe",
+      "Push notifications for weather-based recommendations",
+      "Barcode scanning for clothing items",
+      "Social sharing of outfits",
+      "Dark/light theme support",
+      "Biometric authentication for security"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/aiWardrobe",
+      "live": "https://outfit-ai-liart.vercel.app/download",
+      "linkedin": "https://www.linkedin.com/posts/naresh-mahiya-1ba039254_fashiontech-ai-reactnative-ugcPost-7321492850695716864-B8eE?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
+    },
+    "featured": false,
+    "category": "mobile",
+    "icon": "fas fa-mobile-alt",
+    "image": "/outfitapp.jpg"
+  },
+  {
+    "title": "Outfit-AI",
+    "description": "A comprehensive fashion AI platform featuring weather-based outfit recommendations, AI-powered chatbot for fashion advice, digital wardrobe management, shopping integration with Amazon and Myntra, and image classification using Gemini AI. The platform includes features like outfit planning, social sharing, and a mobile-responsive design.",
+    "tech": [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Gemini AI",
+      "Socket.io",
+      "Selenium",
+      "BeautifulSoup",
+      "Three.js"
+    ],
+    "features": [
+      "Weather-based outfit recommendations using real-time data",
+      "AI-powered fashion advice chatbot",
+      "Digital wardrobe management with image classification",
+      "Shopping integration with Amazon and Myntra",
+      "Social sharing and outfit planning",
+      "Mobile-responsive design with React Native",
+      "Real-time updates and notifications"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/aiWardrobe",
+      "live": "https://outfit-ai-liart.vercel.app",
+      "linkedin": "https://www.linkedin.com/posts/aditya-kurani_introducing-outfitai-try-outfitai-https-activity-7317743940403613696-_Ugq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
+    },
+    "featured": true,
+    "category": "ai",
+    "icon": "fas fa-tshirt",
+    "image": "/outfitaiweb.png",
+    "video": "/outfit.mp4"
+  },
+  {
+    "title": "Medpulse",
+    "description": "A web application that allows users to book doctor appointments and find the nearest clinic using geolocation, rate doctors, get prescriptions via email and chat with doctors.",
+    "tech": [
+      "PHP/Hack",
+      "SQL",
+      "WebSocket",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "features": [
+      "Real-time doctor appointment booking system",
+      "Clinic locator with geolocation services",
+      "Secure patient-doctor messaging",
+      "Digital prescription management",
+      "Doctor rating and review system",
+      "Email notifications and reminders",
+      "Responsive design for all devices"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/Appointment_booking",
+      "live": false,
+      "linkedin": "https://www.linkedin.com/posts/aditya-kurani_hey-guys-my-teammate-utkarsh-pise-and-i-activity-7243577330135162881-o36s?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
+    },
+    "featured": true,
+    "category": "web",
+    "icon": "fas fa-calendar-check",
+    "image": "/medpulsevid.mp4",
+    "isVideo": true,
+    "video": "/medpulsevid.mp4"
+  },
+  {
+    "title": "Friendify",
+    "description": "A full-stack social media application where users can sign up, post updates, add friends, share posts within their network, real-time messaging, story sharing, and media sharing.",
+    "tech": [
+      "PHP/Hack",
+      "SQL",
+      "JavaScript",
+      "WebSocket",
+      "HTML",
+      "CSS"
+    ],
+    "features": [
+      "User authentication and profile management",
+      "Real-time news feed with posts and stories",
+      "Friend request and connection system",
+      "Instant messaging with WebSocket",
+      "Media upload and sharing",
+      "Like, comment, and share functionality",
+      "Responsive design for all devices"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/projects",
+      "live": false,
+      "linkedin": "https://www.linkedin.com/in/aditya-kurani-818668176/"
+    },
+    "featured": false,
+    "category": "web",
+    "icon": "fas fa-users",
+    "image": "/friendify.png"
+  },
+  {
+    "title": "WhisperLog",
+    "description": "A real-time chat web app with text and media sharing. Uniquely optimized backend uses a 10-message buffer and 60-second intervals for efficient message handling. Features include optimistic message rendering, voice-to-text, auto-correction via API, user profiles, and end-to-end encryption with X25519.",
+    "tech": [
+      "MERN",
+      "OAuth 2.0",
+      "REST APIs",
+      "Socket.io"
+    ],
+    "features": [
+      "End-to-end encrypted messaging",
+      "Voice-to-text message transcription",
+      "Media sharing and preview",
+      "Message reactions and replies",
+      "Online/offline status",
+      "Message read receipts",
+      "Optimized for low-bandwidth connections"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/whisperlog",
+      "live": "https://whisperlog.vercel.app",
+      "linkedin": ""
+    },
+    "featured": true,
+    "category": "web",
+    "icon": "fas fa-seedling",
+    "image": "/whisperlog.png"
+  },
+  {
+    "title": "Dhaango",
+    "description": "A scalable web application aimed at improving farmer productivity by enabling real-time communication, providing access to essential tools and updates on schemes.",
+    "tech": [
+      "Hack",
+      "SQL",
+      "OAuth 2.0",
+      "REST APIs"
+    ],
+    "features": [
+      "Farmer community platform",
+      "Real-time weather updates and alerts",
+      "Government scheme notifications",
+      "Crop price tracking",
+      "Expert advice and Q&A forum",
+      "Multi-language support",
+      "Offline functionality for rural areas"
+    ],
+    "links": {
+      "github": "https://github.com/adi2687/Dhaango",
+      "live": false,
+      "linkedin": "https://www.linkedin.com/posts/aksh8t_dhaango-empoweringfarmers-agritech-ugcPost-7256973678339309568-tVja?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
+    },
+    "featured": false,
+    "category": "web",
+    "icon": "fas fa-seedling",
+    "image": "/dhaango.png"
+  } , 
+  {
+    "title":"Decentralized Cyber Defense",
+    "description":"this is the sample",
+    "tech":[
+      "IPFS",
+      "MERN",
+      "ML",
+      "BlockChain",
+      "Zustang"
+    ],
+    "features":[
+      "features1","feature2"
+    ],
+    "links":{
+      "github":"https://github.com/adi2687/sih",
+      "live":false,
+      "linkedin":""
+    },
+    "featured":true,
+    "category":"web",
+    "icon":"fas fa-seedling",
+    "image":"/dhaango.png"
+  }
+]

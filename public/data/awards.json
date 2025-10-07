@@ -1,0 +1,27 @@
+[
+  {
+    "title": "National Level Hackathon - 5th Rank",
+    "description": "Ranked 5th in a national-level hackathon by IIITM Gwalior, 2024, for an AI-based farming solution",
+    "icon": "fas fa-trophy",
+    "year": "2024"
+  },
+  {
+    "title": "Medecro.ai Hackathon Finalist",
+    "description": "Reached the final round (Top 50 of 1600+) of a national hackathon hosted by Medecro.ai, 2024",
+    "icon": "fas fa-medal",
+    "year": "2024"
+  },
+  {
+    "title": "International Youth Math Competition",
+    "description": "Qualified IYMC (International Youth Math Competition) 2023, 2024",
+    "icon": "fas fa-calculator",
+    "year": "2023-2024"
+  },
+  {
+    "title": "LeetCode Problem Solver",
+    "description": "Solved 300+ questions on LeetCode, demonstrating strong algorithmic and data structure skills",
+    "icon": "fas fa-code",
+    "link": "https://leetcode.com/AdityaKurani",
+    "year": "Ongoing"
+  }
+]
