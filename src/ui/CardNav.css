@@ -7,24 +7,21 @@
   width: 90%;
   max-width: 600px;
   z-index: 1000;
-  
+}
+
+.nav-glass-wrapper {
+  width: 100%;
+  border-radius: 0.75rem;
 }
 
 .card-nav {
   display: block;
   height: 60px;
   padding: 0;
-  /* Glassmorphism effect */
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 0.75rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.37),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: transparent;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 /* Light theme glassmorphism */
@@ -47,31 +44,75 @@
   width: 200%;
   height: 200%;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
+    circle at 40% 40%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
     transparent 50%
   );
-  animation: fluidMove 15s ease-in-out infinite;
+  animation: fluidMove 20s ease-in-out infinite;
   pointer-events: none;
+  opacity: 0.8;
 }
 
 [data-theme="light"] .card-nav::before {
   background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.05) 0%,
+    circle at 40% 40%,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.03) 25%,
     transparent 50%
+  );
+}
+
+/* Secondary fluid layer */
+.card-nav::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at 60% 60%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 40%
+  );
+  animation: fluidMove2 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+[data-theme="light"] .card-nav::after {
+  background: radial-gradient(
+    ellipse at 60% 60%,
+    rgba(0, 0, 0, 0.05) 0%,
+    transparent 40%
   );
 }
 
 @keyframes fluidMove {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(20%, -15%) scale(1.1) rotate(5deg);
+  }
+  50% {
+    transform: translate(-10%, 20%) scale(0.95) rotate(-3deg);
+  }
+  75% {
+    transform: translate(15%, -10%) scale(1.05) rotate(2deg);
+  }
+}
+
+@keyframes fluidMove2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
   33% {
-    transform: translate(30%, -30%) scale(1.1);
+    transform: translate(-25%, 20%) scale(1.15) rotate(-8deg);
   }
   66% {
-    transform: translate(-20%, 20%) scale(0.9);
+    transform: translate(15%, -25%) scale(0.9) rotate(5deg);
   }
 }
 

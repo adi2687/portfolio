@@ -240,7 +240,7 @@
 
 .timeline {
   position: relative;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -253,15 +253,17 @@
   bottom: 0;
   left: 50%;
   margin-left: -1px;
+  display: none;
 }
 
 .timeline-item {
-  padding: 1rem 2rem;
+  padding: 0;
   position: relative;
-  width: 50%;
+  width: 100%;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  margin: 0 auto;
 }
 
 .timeline-item.revealed {
@@ -269,53 +271,44 @@
   transform: translateY(0);
 }
 
-.timeline-item.left {
-  left: 0;
-}
-
-.timeline-item.right {
-  left: 50%;
-}
-
 .timeline-icon {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--bg-tertiary);
-  border: 2px solid var(--text-primary);
-  top: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  top: 1.5rem;
+  left: 1.5rem;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
 }
 
 .timeline-item:hover .timeline-icon {
   transform: scale(1.2);
-}
-
-.timeline-item.left .timeline-icon {
-  right: -20px;
-}
-
-.timeline-item.right .timeline-icon {
-  left: -20px;
+  border-color: var(--text-primary);
 }
 
 .timeline-content {
   padding: 1.5rem;
+  padding-left: 5rem;
   background-color: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .timeline-item:hover .timeline-content {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  border-color: var(--text-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-date {
@@ -372,22 +365,32 @@
     grid-template-columns: 1fr;
   }
 
-  .timeline::after {
-    left: 31px;
-  }
-  
   .timeline-item {
     width: 100%;
-    padding-left: 70px;
-    padding-right: 1rem;
-  }
-  
-  .timeline-item.right {
-    left: 0;
   }
   
   .timeline-icon {
-    left: 10px !important;
-    right: auto !important;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .timeline-content {
+    padding: 1.25rem;
+    padding-left: 4rem;
+  }
+
+  .timeline-item-title {
+    font-size: 1.125rem;
+  }
+
+  .timeline-item-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .timeline-text {
+    font-size: 0.8rem;
   }
 }

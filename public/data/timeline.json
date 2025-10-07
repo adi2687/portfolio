@@ -1,9 +1,14 @@
 [
   {
-    "title": "IIIT Nagpur",
-    "subtitle": "B.Tech in Computer Science and Engineering",
-    "date": "Sept 2023 - June 2027",
-    "description": "Current CGPA: 8.10. Coursework: Data Structures and Algorithms, Web Development, Computer Programming, Operating Systems and OOPS.",
-    "icon": "fas fa-graduation-cap"
-  } 
+    "education": {
+      "title": "IIIT Nagpur",
+      "subtitle": "B.Tech in Computer Science and Engineering",
+      "date": "Sept 2023 - June 2027",
+      "description": "Current CGPA: 8.10.\nCoursework: Data Structures and Algorithms, Web Development, Computer Programming, Operating Systems and OOPS.",
+      "icon": "fas fa-graduation-cap"
+    }
+  },
+  {
+    "questions": "300 +" 
+  }
 ]

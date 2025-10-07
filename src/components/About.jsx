@@ -6,8 +6,9 @@ const About = () => {
   const [skillsData, setSkillsData] = useState([])
   const [awardsData, setAwardsData] = useState([])
   const [timelineData, setTimelineData] = useState([])
-  const [projectslength,setProjectslength]=useState(0)
-  const [projectsData,setProjectsData]=useState([])
+  const [projectslength, setProjectslength] = useState(0)
+  const [projectsData, setProjectsData] = useState([])
+  const [questions, setQuestions] = useState(0)
   useEffect(() => {
     // Load about data
     fetch('/data/about.json')
@@ -30,7 +31,11 @@ const About = () => {
     // Load timeline data
     fetch('/data/timeline.json')
       .then(res => res.json())
-      .then(data => setTimelineData(data))
+      .then(data => {
+        setTimelineData(data[0].education)
+        setQuestions(data[1].questions)
+
+      })
       .catch(err => console.error('Error loading timeline data:', err))
 
     // Load projects data
@@ -55,8 +60,8 @@ const About = () => {
         <div className="about-content">
           <div className="about-text scroll-reveal">
             {aboutData.paragraphs.map((paragraph, index) => (
-              <p 
-                key={index} 
+              <p
+                key={index}
                 dangerouslySetInnerHTML={{ __html: paragraph }}
                 className="about-paragraph"
               />
@@ -65,17 +70,14 @@ const About = () => {
 
           <div className="about-stats scroll-reveal">
             <div className="stat-card">
-              <div className="stat-number">120+</div>
+              <div className="stat-number">{questions}</div>
               <div className="stat-label">LeetCode Problems</div>
             </div>
             <div className="stat-card">
               <div className="stat-number">{projectslength}</div>
               <div className="stat-label">Projects Built</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-number">5th</div>
-              <div className="stat-label">National Rank</div>
-            </div>
+            
           </div>
         </div>
 
@@ -116,19 +118,21 @@ const About = () => {
         <div className="timeline-section">
           <h3 className="timeline-title scroll-reveal">Education</h3>
           <div className="timeline">
-            {timelineData.map((item, index) => (
-              <div key={index} className={`timeline-item scroll-reveal ${index % 2 === 0 ? 'left' : 'right'}`}>
+            {timelineData ?  (
+              <div className={`timeline-item scroll-reveal`}>
                 <div className="timeline-icon">
-                  <i className={item.icon}></i>
+                  <i className={timelineData.icon}></i>
                 </div>
                 <div className="timeline-content">
-                  <div className="timeline-date">{item.date}</div>
-                  <h4 className="timeline-item-title">{item.title}</h4>
-                  <h5 className="timeline-item-subtitle">{item.subtitle}</h5>
-                  <p className="timeline-text">{item.description}</p>
+                  <div className="timeline-date">{timelineData.date}</div>
+                  <h4 className="timeline-item-title">{timelineData.title}</h4>
+                  <h5 className="timeline-item-subtitle">{timelineData.subtitle}</h5>
+                  <p className="timeline-text">{timelineData.description}</p>
                 </div>
               </div>
-            ))}
+            ) : (
+              <p>No timeline data available</p>
+            )}
           </div>
         </div>
       </div>

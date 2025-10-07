@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaGoogle } from 'react-icons/fa'
 import './Hero.css'
 import me from '../../public/metesting.jpg'
+
 const Hero = () => {
   const [heroData, setHeroData] = useState({ description: '' })
 
@@ -18,12 +19,11 @@ const Hero = () => {
   }
 
   return (
-    <section id="home" className="hero" >
+    <section id="home" className="hero">
       <div className="grid-background"></div>
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-text">
-            {/* <p className="hero-greeting animate-fadeIn">Hi, I'm</p> */}
             <h1 className="hero-name animate-fadeInUp">
               Aditya Kurani<span className="cursor-blink">_</span>
             </h1>
@@ -42,11 +42,11 @@ const Hero = () => {
                 Get In Touch
               </button>
             </div>
-            <div className="hero-social animate-fadeInUp">
+            <div className="hero-social animate-fadeInUp" id="socialLinks">
               <a href="https://github.com/adi2687" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaGithub />
               </a>
-              <a href="https://www.linkedin.com/in/aditya-kurani-818668176/" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://www.linkedin.com/in/aditya-kurani" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaLinkedin />
               </a>
               <a href="https://x.com/AdityaKurani" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -60,15 +60,15 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          {/* <div className="hero-visual">
+
+          <div className="hero-visual">
             <div className="hero-image-wrapper">
               <div className="hero-image-border"></div>
-              <div className="hero-image-content">
-                <span className="hero-initials">AK</span>
-              </div>
+              <img src={me} alt="Aditya Kurani" className="hero-photo" />
             </div>
-          </div> */}
+          </div>
         </div>
+
         <div className="scroll-indicator">
           <div className="scroll-mouse">
             <div className="scroll-wheel"></div>

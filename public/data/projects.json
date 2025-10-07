@@ -70,7 +70,7 @@
       "linkedin": "https://www.linkedin.com/posts/aditya-kurani_introducing-outfitai-try-outfitai-https-activity-7317743940403613696-_Ugq?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
     },
     "featured": true,
-    "category": "ai",
+    "category": "web",
     "icon": "fas fa-tshirt",
     "image": "/outfitaiweb.png",
     "video": "/outfit.mp4",
@@ -95,7 +95,7 @@
       "live": false,
       "linkedin": "https://www.linkedin.com/posts/aditya-kurani_hey-guys-my-teammate-utkarsh-pise-and-i-activity-7243577330135162881-o36s?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm-iJQBHeUeuiQJdzLWnGL5zXLGTL0fUjQ"
     },
-    "featured": true,
+    "featured": false,
     "category": "web",
     "icon": "fas fa-calendar-check",
     "image": "/medpulsevid.mp4",

@@ -1,16 +1,25 @@
 [
-    {
-        "title": "Backend Development Intern",
-        "subtitle": "eSubhalekha",
-        "date": "Jan 2025 – Mar 2025",
-        "description": "Improved backend systems with PHP and Hack using MVC frameworks, supporting up to 1,000 requests per day. Improved routing efficiency, reducing response times by 15% and optimizing server performance. Streamlined data flow, boosting system speed and reliability by 20%.",
-        "icon": "fas fa-briefcase"
-      },
-      {
-        "title":"Software Engineer(Full Stack Developer)",
-        "subtitle":"QuickIntell",
-        "date":"Sept 2025 – Present",
-        "description":"Added Zustand for state management, implemented real-time features using WebSockets, and optimized performance with lazy loading and code splitting.Made webhook form for the agent configuration.",
-        "icon":"fas fa-briefcase"
-      }
+  {
+    "position": "Software Engineer (Full Stack Developer)",
+    "company": "QuickIntell",
+    "startDate": "Sept 2025",
+    "endDate": "Present",
+    "description": [
+      "Added Zustand for state management, implemented real-time features using WebSockets, and optimized performance with lazy loading and code splitting",
+      "Made webhook form for the agent configuration."
+    ],
+    "icon": "fas fa-briefcase"
+  },
+  {
+    "position": "Backend Development Intern",
+    "company": "eSubhalekha",
+    "startDate": "Jan 2025",
+    "endDate": "Mar 2025",
+    "description": [
+      "Improved backend systems with PHP and Hack using MVC frameworks, supporting up to 1,000 requests per day. ",
+      "Improved routing efficiency, reducing response times by 15% and optimizing server performance. ",
+      "Streamlined data flow, boosting system speed and reliability by 20%."
+    ],
+    "icon": "fas fa-briefcase"
+  }
 ]

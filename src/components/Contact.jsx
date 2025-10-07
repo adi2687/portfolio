@@ -1,37 +1,57 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 const Contact = () => {
+  const form = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
-  const [status, setStatus] = useState({ type: '', message: '' })
+  const [submitStatus, setSubmitStatus] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    if (!formData.email) {
+      setSubmitStatus('error')
+      return
+    }
+    
     setIsSubmitting(true)
-    setStatus({ type: '', message: '' })
+    setSubmitStatus(null)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus({
-        type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon.'
-      })
-      setFormData({ name: '', email: '', message: '' })
+    try {
+      const result = await emailjs.sendForm(
+        'service_uet0wns',              // Replace with your EmailJS service ID
+        'template_mjgdn3v',              // Replace with your EmailJS template ID
+        form.current,
+        'tVYHnLdWAWgc8ZPed'              // Replace with your EmailJS public key
+      )
+
+      if (result.text === 'OK') {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        throw new Error('Failed to send message')
+      }
+    } catch (error) {
+      console.error('Error sending email:', error)
+      setSubmitStatus('error')
+    } finally {
       setIsSubmitting(false)
-    }, 1500)
+    }
   }
 
   return (
@@ -84,7 +104,10 @@ const Contact = () => {
             </div>
           </div>
 
-          <form className="contact-form scroll-reveal" onSubmit={handleSubmit}>
+          <form className="contact-form scroll-reveal" ref={form} onSubmit={handleSubmit}>
+            {/* Hidden title field for EmailJS subject line */}
+            <input type="hidden" name="title" value="Portfolio Contact Form Submission" />
+
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
@@ -124,12 +147,6 @@ const Contact = () => {
               />
             </div>
 
-            {status.message && (
-              <div className={`form-status ${status.type}`}>
-                {status.message}
-              </div>
-            )}
-
             <button 
               type="submit" 
               className="btn btn-primary submit-btn"
@@ -147,6 +164,18 @@ const Contact = () => {
                 </>
               )}
             </button>
+
+            {submitStatus === 'success' && (
+              <div className="form-status success">
+                ✅ Thank you! Your message has been sent successfully.
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="form-status error">
+                ❌ Failed to send message. Please try again or email me directly.
+              </div>
+            )}
           </form>
         </div>
       </div>

@@ -7,6 +7,7 @@ import Contact from './components/Contact'
 import CardNav from './ui/navbar'
 import Pixel from './ui/Pixel'
 import ScrollProgress from './components/ScrollProgress'
+import ExperienceTimeline from './components/exp'
 
 function App() {
   useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
       textColor: '#ffffff',
       links: [
         { label: 'Skills', href: '#about', ariaLabel: 'View my skills' },
-        { label: 'Experience', href: '#about', ariaLabel: 'View my experience' }
+        { label: 'Experience', href: '#experience', ariaLabel: 'View my experience' }
       ]
     },
     {
@@ -53,7 +54,7 @@ function App() {
       textColor: '#ffffff',
       links: [
         { label: 'Get in Touch', href: '#contact', ariaLabel: 'Contact me' },
-        { label: 'Social Links', href: '#contact', ariaLabel: 'View social links' }
+        { label: 'Social Links', href: '#socialLinkstesting', ariaLabel: 'View social links' }
       ]
     }
   ]
@@ -77,6 +78,7 @@ function App() {
         buttonTextColor="#000000"
       />
         <Hero />
+        <ExperienceTimeline />
         <About />
         <Projects />
         <Contact />
@@ -84,4 +86,5 @@ function App() {
     </>
   )
 }
+
 export default App

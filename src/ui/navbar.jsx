@@ -6,6 +6,7 @@ import { FaSearch, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
 import CommandMenu from '../components/CommandMenu';
 import { useTheme } from '../context/ThemeContext';
 import { playToggleSound } from '../utils/sounds';
+import GlassSurface from './GlassSurface.';
 import './CardNav.css';
 
 const CardNav = ({
@@ -168,8 +169,18 @@ const CardNav = ({
 
   return (
     <div className={`card-nav-container ${className}`}>
-      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
-        <div className="card-nav-top">
+      <GlassSurface
+        width="100%"
+        height="auto"
+        borderRadius={12}
+        brightness={50}
+        opacity={0.1}
+        blur={10}
+        // backgroundOpacity={0.1}
+        className="nav-glass-wrapper"
+      >
+        <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`}>
+          <div className="card-nav-top">
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
             onClick={toggleMenu}
@@ -248,7 +259,8 @@ const CardNav = ({
           ))}
         </div>
 
-      </nav>
+        </nav>
+      </GlassSurface>
       
       <CommandMenu 
         isOpen={isCommandMenuOpen} 
