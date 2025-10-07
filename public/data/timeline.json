@@ -5,21 +5,5 @@
     "date": "Sept 2023 - June 2027",
     "description": "Current CGPA: 8.10. Coursework: Data Structures and Algorithms, Web Development, Computer Programming, Operating Systems and OOPS.",
     "icon": "fas fa-graduation-cap"
-  },
-  {
-    "title": "Backend Development Intern",
-    "subtitle": "eSubhalekha",
-    "date": "Jan 2025 – Mar 2025",
-    "description": "Improved backend systems with PHP and Hack using MVC frameworks, supporting up to 1,000 requests per day. Improved routing efficiency, reducing response times by 15% and optimizing server performance. Streamlined data flow, boosting system speed and reliability by 20%.",
-    "icon": "fas fa-briefcase"
-  },
-  
-  {
-    "title": "Medecro.ai Hackathon Finalist",
-    "subtitle": "Top 50 of 1600+ participants",
-    "date": "2024",
-    "description": "Reached the final round of a national hackathon hosted by Medecro.ai, showcasing innovative healthcare technology solutions.",
-    "icon": "fas fa-medal"
-  }
-  
+  } 
 ]

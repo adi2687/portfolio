@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaLinkedin, FaPlay, FaStar, FaEye, FaCode, FaRocket } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaLinkedin, FaPlay, FaStar, FaEye, FaCode, FaRocket, FaSearch, FaTimes } from 'react-icons/fa'
 import './Projects.css'
 const Projects = () => {
   const [projectsData, setProjectsData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedProject, setSelectedProject] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const videoRefs = useRef([])
 
   useEffect(() => {
@@ -56,12 +57,20 @@ const Projects = () => {
   }, [projectsData])
 
   const categories = ['all', 'ai', 'web', 'mobile']
-  
-  const filteredProjects = selectedCategory === 'all' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === selectedCategory)
 
-  const featuredProjects = projectsData.filter(project => project.featured)
+  // Filter by category and search query
+  const filteredProjects = projectsData.filter(project => {
+    const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory
+    const matchesSearch = searchQuery === '' ||
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (project.summary && project.summary.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      project.tech.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase()))
+    return matchesCategory && matchesSearch
+  })
+
+  // Filter featured projects with search query
+  const featuredProjects = filteredProjects.filter(project => project.featured)
 
   const addVideoRef = (el) => {
     if (el && !videoRefs.current.includes(el)) {
@@ -77,118 +86,125 @@ const Projects = () => {
           <h2 className="section-title">Projects</h2>
           <div className="section-line"></div>
         </div>
-
-        {/* Featured Projects */}
-        <div className="featured-section">
-          <h3 className="subsection-title scroll-reveal">
-            <FaStar className="title-icon" />
-            Featured Work
-            <div className="title-glow"></div>
-          </h3>
-          <div className="featured-grid">
-            {featuredProjects.map((project, index) => (
-              <div 
-                key={index} 
-                className="project-card featured scroll-reveal"
-                onClick={() => setSelectedProject(project)}
-                style={{ animationDelay: `${index * 0.2}s` }}
+        {/* Search Bar */}
+        <div className="search-container">
+          <div className="search-wrapper">
+            <FaSearch className="search-icon" />
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search projects by name, tech stack, or description..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button
+                className="search-clear"
+                onClick={() => setSearchQuery('')}
+                aria-label="Clear search"
               >
-                <div className="project-image">
-                  {project.isVideo || project.video ? (
-                    <video 
-                      ref={addVideoRef}
-                      src={project.video || project.image} 
-                      muted 
-                      loop 
-                      playsInline
-                      preload="metadata"
-                    />
-                  ) : (
-                    <img src={project.image} alt={project.title} />
-                  )}
-                  <div className="project-overlay">
-                    <div className="overlay-content">
-                      <FaPlay className="play-icon" />
-                      <span className="view-details">View Details</span>
-                      <div className="overlay-particles">
-                        <div className="particle"></div>
-                        <div className="particle"></div>
-                        <div className="particle"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="project-glow"></div>
-                </div>
-                <div className="project-content">
-                  <div className="project-header">
-                    <div className="project-icon-wrapper">
-                      <i className={project.icon}></i>
-                      <div className="icon-glow"></div>
-                    </div>
-                    <span className="project-category">
-                      <FaRocket className="category-icon" />
-                      {project.category}
-                    </span>
-                  </div>
-                  <h4 className="project-title">{project.title}</h4>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.slice(0, 4).map((tech, i) => (
-                      <span key={i} className="tech-tag" style={{ animationDelay: `${i * 0.1}s` }}>
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 4 && (
-                      <span className="tech-tag more-tech">+{project.tech.length - 4}</span>
-                    )}
-                  </div>
-                  <div className="project-links">
-                    {project.links.github && (
-                      <a 
-                        href={project.links.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="project-link github-link"
-                        title="View Code"
-                      >
-                        <FaGithub />
-                        <span className="link-tooltip">GitHub</span>
-                      </a>
-                    )}
-                    {project.links.live && (
-                      <a 
-                        href={project.links.live} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="project-link live-link"
-                        title="Live Demo"
-                      >
-                        <FaExternalLinkAlt />
-                        <span className="link-tooltip">Live Demo</span>
-                      </a>
-                    )}
-                    {project.links.linkedin && (
-                      <a 
-                        href={project.links.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="project-link linkedin-link"
-                        title="LinkedIn Post"
-                      >
-                        <FaLinkedin />
-                        <span className="link-tooltip">LinkedIn</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <div className="card-border-glow"></div>
-              </div>
-            ))}
+                <FaTimes />
+              </button>
+            )}
           </div>
+          {searchQuery && (
+            <div className="search-results-count">
+              Found {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
+            </div>
+          )}
         </div>
+        {/* Featured Projects */}
+        {featuredProjects.length > 0 && (
+          <div className="featured-section">
+
+            <div className="featured-grid">
+              {featuredProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className="project-card featured scroll-reveal"
+                  onClick={() => setSelectedProject(project)}
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="project-image">
+                    {project.isVideo || project.video ? (
+                      <video
+                        ref={addVideoRef}
+                        src={project.video || project.image}
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : (
+                      <img src={project.image} alt={project.title} />
+                    )}
+                  </div>
+                  <div className="project-content">
+                    <div className="project-header">
+                      <div className="project-icon-wrapper">
+                        <i className={project.icon}></i>
+                      </div>
+                      <span className="project-category">
+                        <FaRocket className="category-icon" />
+                        {project.category}
+                      </span>
+                    </div>
+                    <h4 className="project-title">{project.title}</h4>
+                    <p className="project-description">{project.summary}</p>
+                    <div className="project-tech">
+                      {project.tech.slice(0, 4).map((tech, i) => (
+                        <span key={i} className="tech-tag" style={{ animationDelay: `${i * 0.1}s` }}>
+                          {tech}
+                        </span>
+                      ))}
+                      {project.tech.length > 4 && (
+                        <span className="tech-tag more-tech">+{project.tech.length - 4}</span>
+                      )}
+                    </div>
+                    <div className="project-links">
+                      {project.links.github && (
+                        <a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="project-link github-link"
+                          title="View Code"
+                        >
+                          <FaGithub />
+                        </a>
+                      )}
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="project-link live-link"
+                          title="Live Demo"
+                        >
+                          <FaExternalLinkAlt />
+                        </a>
+                      )}
+                      {project.links.linkedin && (
+                        <a
+                          href={project.links.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="project-link linkedin-link"
+                          title="LinkedIn Post"
+                        >
+                          <FaLinkedin />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* All Projects */}
         <div className="all-projects-section">
@@ -197,7 +213,7 @@ const Projects = () => {
             All Projects
             <div className="title-glow"></div>
           </h3>
-          
+
           <div className="filter-buttons scroll-reveal">
             {categories.map((category, index) => (
               <button
@@ -215,71 +231,90 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="projects-grid">
-            {filteredProjects.map((project, index) => (
-              <div 
-                key={index} 
-                className="project-card compact scroll-reveal"
-                onClick={() => setSelectedProject(project)}
-                style={{ animationDelay: `${index * 0.1}s` }}
+          {filteredProjects.length === 0 ? (
+            <div className="no-results">
+              <FaSearch className="no-results-icon" />
+              <h4 className="no-results-title">No projects found</h4>
+              <p className="no-results-text">
+                Try adjusting your search or filter to find what you're looking for.
+              </p>
+              <button
+                className="btn btn-outline"
+                onClick={() => {
+                  setSearchQuery('')
+                  setSelectedCategory('all')
+                }}
               >
-                <div className="project-card-header">
-                  <div className="project-icon-wrapper">
-                    <i className={project.icon}></i>
-                    <div className="icon-pulse"></div>
-                  </div>
-                  <div className="project-card-links">
-                    {project.links.github && (
-                      <a 
-                        href={project.links.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="card-link github-link"
-                        title="View Code"
-                      >
-                        <FaGithub />
-                        <div className="link-ripple"></div>
-                      </a>
-                    )}
-                    {project.links.live && (
-                      <a 
-                        href={project.links.live} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="card-link live-link"
-                        title="Live Demo"
-                      >
-                        <FaExternalLinkAlt />
-                        <div className="link-ripple"></div>
-                      </a>
-                    )}
-                    <div className="view-more-btn">
-                      <FaEye />
-                      <span>View More</span>
+                Clear Filters
+              </button>
+            </div>
+          ) : (
+            <div className="projects-grid">
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className="project-card compact scroll-reveal"
+                  onClick={() => setSelectedProject(project)}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="project-card-header">
+                    <div className="project-icon-wrapper">
+                      <i className={project.icon}></i>
+                      <div className="icon-pulse"></div>
+                    </div>
+                    <div className="project-card-links">
+                      {project.links.github && (
+                        <a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="card-link github-link"
+                          title="View Code"
+                        >
+                          <FaGithub />
+                          <div className="link-ripple"></div>
+                        </a>
+                      )}
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="card-link live-link"
+                          title="Live Demo"
+                        >
+                          <FaExternalLinkAlt />
+                          <div className="link-ripple"></div>
+                        </a>
+                      )}
+                      <div className="view-more-btn">
+                        <FaEye />
+                        <span>View More</span>
+                      </div>
                     </div>
                   </div>
+                  <h4 className="project-card-title">{project.title}</h4>
+                  <p className="project-card-description">
+                    {project.description.slice(0, 120)}...
+                  </p>
+                  <div className="project-card-tech">
+                    {project.tech.slice(0, 3).map((tech, i) => (
+                      <span key={i} className="tech-badge" style={{ animationDelay: `${i * 0.05}s` }}>
+                        {tech}
+                      </span>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <span className="tech-badge more-badge">+{project.tech.length - 3}</span>
+                    )}
+                  </div>
+                  <div className="card-hover-glow"></div>
+                  <div className="card-border-animation"></div>
                 </div>
-                <h4 className="project-card-title">{project.title}</h4>
-                <p className="project-card-description">
-                  {project.description.slice(0, 120)}...
-                </p>
-                <div className="project-card-tech">
-                  {project.tech.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="tech-badge" style={{ animationDelay: `${i * 0.05}s` }}>
-                      {tech}
-                    </span>
-                  ))}
-                  {project.tech.length > 3 && (
-                    <span className="tech-badge more-badge">+{project.tech.length - 3}</span>
-                  )}
-                </div>
-                <div className="card-hover-glow"></div>
-                <div className="card-border-animation"></div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -287,20 +322,20 @@ const Projects = () => {
       {selectedProject && (
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="modal-close" 
+            <button
+              className="modal-close"
               onClick={() => setSelectedProject(null)}
             >
               ×
             </button>
-            
+
             <div className="modal-body">
               <div className="modal-media">
                 {selectedProject.isVideo || selectedProject.video ? (
-                  <video 
-                    src={selectedProject.video || selectedProject.image} 
-                    controls 
-                    autoPlay 
+                  <video
+                    src={selectedProject.video || selectedProject.image}
+                    controls
+                    autoPlay
                     loop
                     muted
                   />
@@ -308,15 +343,15 @@ const Projects = () => {
                   <img src={selectedProject.image} alt={selectedProject.title} />
                 )}
               </div>
-              
+
               <div className="modal-info">
                 <div className="modal-header">
                   <h3>{selectedProject.title}</h3>
                   <span className="modal-category">{selectedProject.category}</span>
                 </div>
-                
+
                 <p className="modal-description">{selectedProject.description}</p>
-                
+
                 <div className="modal-section">
                   <h4>Technologies</h4>
                   <div className="modal-tech">
@@ -325,7 +360,7 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {selectedProject.features && selectedProject.features.length > 0 && (
                   <div className="modal-section">
                     <h4>Key Features</h4>
@@ -336,12 +371,12 @@ const Projects = () => {
                     </ul>
                   </div>
                 )}
-                
+
                 <div className="modal-links">
                   {selectedProject.links.github && (
-                    <a 
-                      href={selectedProject.links.github} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.links.github}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-outline"
                     >
@@ -349,9 +384,9 @@ const Projects = () => {
                     </a>
                   )}
                   {selectedProject.links.live && (
-                    <a 
-                      href={selectedProject.links.live} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.links.live}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-primary"
                     >
@@ -359,9 +394,9 @@ const Projects = () => {
                     </a>
                   )}
                   {selectedProject.links.linkedin && (
-                    <a 
-                      href={selectedProject.links.linkedin} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.links.linkedin}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-ghost"
                     >

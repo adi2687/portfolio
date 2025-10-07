@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#2D2D2D"/>
+  
+  <!-- Letter A -->
+  <path d="M256 100 L200 400 L312 400 L256 100 Z" fill="#FFFFFF"/>
+  <path d="M220 340 L292 340" stroke="#2D2D2D" stroke-width="40"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="256" cy="256" r="200" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+  <circle cx="256" cy="256" r="180" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+</svg> 

@@ -2,15 +2,7 @@
   {
     "title": "NOVA",
     "description": "An AI-powered personal assistant with voice control, app management, system controls, Google Calendar integration, image analysis, real-time translation, chatbot, search capabilities, music control, and productivity automation. Experience hands-free digital interaction with natural language understanding and personalized assistance.",
-    "tech": [
-      "Python",
-      "Google API",
-      "Google calendar API",
-      "Google maps API",
-      "pyttsx3",
-      "SpeechRecognition",
-      "Google gemini api"
-    ],
+    "tech": ["Python", "Google API", "Google calendar API", "Google maps API", "pyttsx3", "SpeechRecognition", "Google gemini api"],
     "features": [
       "Voice-controlled interface with natural language processing",
       "Smart calendar management with Google Calendar integration",
@@ -30,20 +22,14 @@
     "category": "ai",
     "icon": "fas fa-robot",
     "image": "/nova.png",
-    "video": "/novavideo.mp4"
+    "video": "/novavideo.mp4",
+    "summary": "NOVA is a full-featured AI assistant offering voice control, productivity automation, smart calendar management, real-time translation, and image analysis.",
+    "shortSummary": "AI assistant with voice control, calendar, translation, and productivity features."
   },
   {
     "title": "Outfit-AI Mobile",
     "description": "A React Native mobile app version of Outfit-AI, featuring weather-based outfit recommendations, AI-powered fashion advice, digital wardrobe management, and shopping integration. The app provides a seamless mobile experience with offline capabilities and push notifications.",
-    "tech": [
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Gemini AI",
-      "Socket.io",
-      "Expo"
-    ],
+    "tech": ["React Native", "Node.js", "MongoDB", "Express", "Gemini AI", "Socket.io", "Expo"],
     "features": [
       "Mobile-optimized interface with smooth animations",
       "Offline access to saved outfits and wardrobe",
@@ -61,22 +47,14 @@
     "featured": false,
     "category": "mobile",
     "icon": "fas fa-mobile-alt",
-    "image": "/outfitapp.jpg"
+    "image": "/outfitapp.jpg",
+    "summary": "Outfit-AI Mobile provides weather-based outfit recommendations, AI fashion advice, wardrobe management, and shopping features on mobile.",
+    "shortSummary": "Mobile fashion AI app with outfit suggestions and wardrobe management."
   },
   {
     "title": "Outfit-AI",
     "description": "A comprehensive fashion AI platform featuring weather-based outfit recommendations, AI-powered chatbot for fashion advice, digital wardrobe management, shopping integration with Amazon and Myntra, and image classification using Gemini AI. The platform includes features like outfit planning, social sharing, and a mobile-responsive design.",
-    "tech": [
-      "React.js",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Gemini AI",
-      "Socket.io",
-      "Selenium",
-      "BeautifulSoup",
-      "Three.js"
-    ],
+    "tech": ["React.js", "Node.js", "MongoDB", "Express", "Gemini AI", "Socket.io", "Selenium", "BeautifulSoup", "Three.js"],
     "features": [
       "Weather-based outfit recommendations using real-time data",
       "AI-powered fashion advice chatbot",
@@ -95,19 +73,14 @@
     "category": "ai",
     "icon": "fas fa-tshirt",
     "image": "/outfitaiweb.png",
-    "video": "/outfit.mp4"
+    "video": "/outfit.mp4",
+    "summary": "Outfit-AI is a full-featured fashion platform offering outfit recommendations, chatbot advice, wardrobe management, and shopping integration.",
+    "shortSummary": "Fashion AI platform with outfit planning, chatbot, and shopping features."
   },
   {
     "title": "Medpulse",
     "description": "A web application that allows users to book doctor appointments and find the nearest clinic using geolocation, rate doctors, get prescriptions via email and chat with doctors.",
-    "tech": [
-      "PHP/Hack",
-      "SQL",
-      "WebSocket",
-      "JavaScript",
-      "HTML",
-      "CSS"
-    ],
+    "tech": ["PHP/Hack", "SQL", "WebSocket", "JavaScript", "HTML", "CSS"],
     "features": [
       "Real-time doctor appointment booking system",
       "Clinic locator with geolocation services",
@@ -127,19 +100,14 @@
     "icon": "fas fa-calendar-check",
     "image": "/medpulsevid.mp4",
     "isVideo": true,
-    "video": "/medpulsevid.mp4"
+    "video": "/medpulsevid.mp4",
+    "summary": "Medpulse is a healthcare web app for booking appointments, finding clinics, messaging doctors, and managing prescriptions.",
+    "shortSummary": "Healthcare app for appointments, prescriptions, and doctor communication."
   },
   {
     "title": "Friendify",
     "description": "A full-stack social media application where users can sign up, post updates, add friends, share posts within their network, real-time messaging, story sharing, and media sharing.",
-    "tech": [
-      "PHP/Hack",
-      "SQL",
-      "JavaScript",
-      "WebSocket",
-      "HTML",
-      "CSS"
-    ],
+    "tech": ["PHP/Hack", "SQL", "JavaScript", "WebSocket", "HTML", "CSS"],
     "features": [
       "User authentication and profile management",
       "Real-time news feed with posts and stories",
@@ -157,17 +125,14 @@
     "featured": false,
     "category": "web",
     "icon": "fas fa-users",
-    "image": "/friendify.png"
+    "image": "/friendify.png",
+    "summary": "Friendify is a social media platform with posts, stories, real-time messaging, and media sharing.",
+    "shortSummary": "Social media app with messaging, posts, and media sharing."
   },
   {
     "title": "WhisperLog",
     "description": "A real-time chat web app with text and media sharing. Uniquely optimized backend uses a 10-message buffer and 60-second intervals for efficient message handling. Features include optimistic message rendering, voice-to-text, auto-correction via API, user profiles, and end-to-end encryption with X25519.",
-    "tech": [
-      "MERN",
-      "OAuth 2.0",
-      "REST APIs",
-      "Socket.io"
-    ],
+    "tech": ["MERN", "OAuth 2.0", "REST APIs", "Socket.io"],
     "features": [
       "End-to-end encrypted messaging",
       "Voice-to-text message transcription",
@@ -185,17 +150,14 @@
     "featured": true,
     "category": "web",
     "icon": "fas fa-seedling",
-    "image": "/whisperlog.png"
+    "image": "/whisperlog.png",
+    "summary": "WhisperLog is a secure real-time chat app with end-to-end encryption, voice-to-text, and media sharing.",
+    "shortSummary": "Encrypted chat app with media and voice-to-text."
   },
   {
     "title": "Dhaango",
     "description": "A scalable web application aimed at improving farmer productivity by enabling real-time communication, providing access to essential tools and updates on schemes.",
-    "tech": [
-      "Hack",
-      "SQL",
-      "OAuth 2.0",
-      "REST APIs"
-    ],
+    "tech": ["Hack", "SQL", "OAuth 2.0", "REST APIs"],
     "features": [
       "Farmer community platform",
       "Real-time weather updates and alerts",
@@ -213,29 +175,25 @@
     "featured": false,
     "category": "web",
     "icon": "fas fa-seedling",
-    "image": "/dhaango.png"
-  } , 
+    "image": "/dhaango.png",
+    "summary": "Dhaango is a platform for farmers to get updates, communicate, track crop prices, and access government schemes.",
+    "shortSummary": "Farmer productivity app with updates and alerts."
+  },
   {
-    "title":"Decentralized Cyber Defense",
-    "description":"this is the sample",
-    "tech":[
-      "IPFS",
-      "MERN",
-      "ML",
-      "BlockChain",
-      "Zustang"
-    ],
-    "features":[
-      "features1","feature2"
-    ],
-    "links":{
-      "github":"https://github.com/adi2687/sih",
-      "live":false,
-      "linkedin":""
+    "title": "Decentralized Cyber Defense",
+    "description": "this is the sample",
+    "tech": ["IPFS", "MERN", "ML", "BlockChain", "Zustang"],
+    "features": ["features1", "feature2"],
+    "links": {
+      "github": "https://github.com/adi2687/sih",
+      "live": false,
+      "linkedin": ""
     },
-    "featured":true,
-    "category":"web",
-    "icon":"fas fa-seedling",
-    "image":"/dhaango.png"
+    "featured": true,
+    "category": "web",
+    "icon": "fas fa-seedling",
+    "image": "/dhaango.png",
+    "summary": "Decentralized Cyber Defense is a cybersecurity platform leveraging blockchain, IPFS, and ML for distributed protection.",
+    "shortSummary": "Cybersecurity platform with blockchain, IPFS, and ML."
   }
 ]

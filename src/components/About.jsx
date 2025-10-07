@@ -114,7 +114,7 @@ const About = () => {
         </div>
 
         <div className="timeline-section">
-          <h3 className="timeline-title scroll-reveal">Experience & Education</h3>
+          <h3 className="timeline-title scroll-reveal">Education</h3>
           <div className="timeline">
             {timelineData.map((item, index) => (
               <div key={index} className={`timeline-item scroll-reveal ${index % 2 === 0 ? 'left' : 'right'}`}>
