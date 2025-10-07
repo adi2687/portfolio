@@ -186,7 +186,6 @@ const CardNav = ({
             role="button"
             aria-label={isExpanded ? 'Close menu' : 'Open menu'}
             tabIndex={0}
-            style={{ color: menuColor || '#000' }}
           >
             <div className="hamburger-line" />
             <div className="hamburger-line" />
@@ -204,7 +203,6 @@ const CardNav = ({
               type="button"
               className="theme-toggle-nav-btn"
               onClick={handleThemeToggle}
-              style={{ color: menuColor || '#000' }}
               aria-label="Toggle theme"
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
@@ -216,7 +214,6 @@ const CardNav = ({
                 type="button"
                 className="search-toggle-button smaller"
                 onClick={() => setIsCommandMenuOpen(true)}
-                style={{ color: menuColor || '#000' }}
                 aria-label="Open command menu"
               >
                 <p className='shortcut-text'>Search</p>
@@ -227,7 +224,6 @@ const CardNav = ({
                 type="button"
                 className="search-toggle-button"
                 onClick={() => setIsCommandMenuOpen(true)}
-                style={{ color: menuColor || '#000' }}
                 aria-label="Open command menu"
               >
                 <p className='shortcut-text'>Ctrl K</p>

@@ -24,15 +24,13 @@
   width: 100%;
 }
 
-/* Light theme glassmorphism */
+/* Light theme */
+[data-theme="light"] .nav-glass-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
 [data-theme="light"] .card-nav {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: transparent;
 }
 
 /* Animated gradient overlay for fluid effect */
@@ -138,6 +136,11 @@
   justify-content: center;
   cursor: pointer;
   gap: 6px;
+  color: var(--text-primary, #ffffff);
+}
+
+[data-theme="light"] .hamburger-menu {
+  color: #000000;
 }
 
 .hamburger-line {
@@ -165,8 +168,13 @@
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 28px; 
-  color: white; 
+  color: var(--text-primary, #ffffff);
   cursor: pointer;
+  font-weight: 700;
+}
+
+[data-theme="light"] .logo-container {
+  color: #000000;
 }
 
 .logo {
@@ -193,11 +201,20 @@
   justify-content: center;
   font-size: 1.1rem;
   transition: all 0.2s ease;
+  color: var(--text-primary, #ffffff);
+}
+
+[data-theme="light"] .theme-toggle-nav-btn {
+  color: #000000;
 }
 
 .theme-toggle-nav-btn:hover {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .theme-toggle-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .theme-toggle-nav-btn:active {
@@ -207,7 +224,7 @@
 /* Search Button */
 .search-toggle-button {
   background: none;
-  border: 2px solid white;
+  border: 2px solid currentColor;
   cursor: pointer;
   border-radius: 30px;
   transition: all 0.3s ease;
@@ -216,17 +233,27 @@
   justify-content: space-between;
   font-size: 1.2rem;
   padding: 8px 16px;
-  /* width: 120px; */
-  /* height: 40px; */
   gap: 8px;
+  color: var(--text-primary, #ffffff);
 }
+
+[data-theme="light"] .search-toggle-button {
+  color: #000000;
+}
+
 .search-toggle-button.smaller{
   font-size: 1rem;
 }
+
 .search-toggle-button:hover {
   background-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .search-toggle-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .shortcut-text {
@@ -236,6 +263,7 @@
   white-space: nowrap;
   text-transform: uppercase;
   opacity: 0.9;
+  color: inherit;
 }
 /* Content */
 .card-nav-content {
