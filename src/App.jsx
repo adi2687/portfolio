@@ -53,7 +53,7 @@ function App() {
       textColor: '#ffffff',
       links: [
         { label: 'Featured', href: '#projects', ariaLabel: 'View featured projects' },
-        { label: 'All Projects', href: '#projects', ariaLabel: 'View all projects' }
+        { label: 'All Projects', href: '#allprojects', ariaLabel: 'View all projects' }
       ]
     },
     {
@@ -62,7 +62,7 @@ function App() {
       textColor: '#ffffff',
       links: [
         { label: 'Get in Touch', href: '#contact', ariaLabel: 'Contact me' },
-        { label: 'Social Links', href: '#socialLinkstesting', ariaLabel: 'View social links' }
+        { label: 'Social Links', href: '#socialLinks', ariaLabel: 'View social links' }
       ]
     }
   ]

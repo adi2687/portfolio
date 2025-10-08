@@ -208,7 +208,7 @@ const Projects = () => {
         )}
 
         {/* All Projects */}
-        <div className="all-projects-section">
+        <div className="all-projects-section" id="allprojects">
           <h3 className="subsection-title scroll-reveal">
             <FaCode className="title-icon" />
             All Projects
