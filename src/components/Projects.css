@@ -1416,7 +1416,19 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
 }
-
+.btn.youtube-btn{
+  background:red;
+  border: 1px solid red;
+  color: white;
+}
+.btn.youtube-btn:hover{
+  color: white;
+  transform: translateY(-2px);
+}
+/*not youtube btn*/
+.btn:not(.youtube-btn):hover{
+  background-color: transparent;
+}
 .btn-ghost {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);

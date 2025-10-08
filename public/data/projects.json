@@ -24,7 +24,8 @@
     "image": "/nova.png",
     "video": "/novavideo.mp4",
     "summary": "NOVA is a full-featured AI assistant offering voice control, productivity automation, smart calendar management, real-time translation, and image analysis.",
-    "shortSummary": "AI assistant with voice control, calendar, translation, and productivity features."
+    "shortSummary": "AI assistant with voice control, calendar, translation, and productivity features.",
+    "youtube":"https://www.youtube.com/watch?v=t4Ru1JxYO6Y"
   },
   {
     "title": "Outfit-AI Mobile",
@@ -75,7 +76,8 @@
     "image": "/outfitaiweb.png",
     "video": "/outfit.mp4",
     "summary": "Outfit-AI is a full-featured fashion platform offering outfit recommendations, chatbot advice, wardrobe management, and shopping integration.",
-    "shortSummary": "Fashion AI platform with outfit planning, chatbot, and shopping features."
+    "shortSummary": "Fashion AI platform with outfit planning, chatbot, and shopping features.",
+    "youtube":"https://www.youtube.com/watch?v=9sON54fRveU"
   },
   {
     "title": "Medpulse",
@@ -191,7 +193,7 @@
     },
     "featured": true,
     "category": "web",
-    "icon": "fas fa-seedling",
+    "icon": "fas fa-shield",
     "image": "/dhaango.png",
     "summary": "Decentralized Cyber Defense is a cybersecurity platform leveraging blockchain, IPFS, and ML for distributed protection.",
     "shortSummary": "Cybersecurity platform with blockchain, IPFS, and ML."

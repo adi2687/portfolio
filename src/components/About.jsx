@@ -52,7 +52,7 @@ const About = () => {
     <section id="about" className="about section">
       <div className="container">
         <div className="section-header scroll-reveal">
-          <span className="section-number">02.</span>
+          <span className="section-number">03.</span>
           <h2 className="section-title">About Me</h2>
           <div className="section-line"></div>
         </div>

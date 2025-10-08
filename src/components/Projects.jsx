@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaLinkedin, FaPlay, FaStar, FaEye, FaCode, FaRocket, FaSearch, FaTimes } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaLinkedin, FaPlay, FaStar, FaEye, FaCode, FaRocket, FaSearch, FaTimes ,FaYoutube} from 'react-icons/fa'
 import './Projects.css'
 const Projects = () => {
   const [projectsData, setProjectsData] = useState([])
@@ -82,7 +82,7 @@ const Projects = () => {
     <section id="projects" className="projects section">
       <div className="container">
         <div className="section-header scroll-reveal">
-          <span className="section-number">03.</span>
+          <span className="section-number">04.</span>
           <h2 className="section-title">Projects</h2>
           <div className="section-line"></div>
         </div>
@@ -149,6 +149,7 @@ const Projects = () => {
                         {project.category}
                       </span>
                     </div>
+                    
                     <h4 className="project-title">{project.title}</h4>
                     <p className="project-description">{project.summary}</p>
                     <div className="project-tech">
@@ -345,33 +346,11 @@ const Projects = () => {
               </div>
 
               <div className="modal-info">
+                
                 <div className="modal-header">
                   <h3>{selectedProject.title}</h3>
                   <span className="modal-category">{selectedProject.category}</span>
                 </div>
-
-                <p className="modal-description">{selectedProject.description}</p>
-
-                <div className="modal-section">
-                  <h4>Technologies</h4>
-                  <div className="modal-tech">
-                    {selectedProject.tech.map((tech, i) => (
-                      <span key={i} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {selectedProject.features && selectedProject.features.length > 0 && (
-                  <div className="modal-section">
-                    <h4>Key Features</h4>
-                    <ul className="modal-features">
-                      {selectedProject.features.map((feature, i) => (
-                        <li key={i}>{feature}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 <div className="modal-links">
                   {selectedProject.links.github && (
                     <a
@@ -403,7 +382,43 @@ const Projects = () => {
                       <FaLinkedin /> LinkedIn
                     </a>
                   )}
+                  {selectedProject.youtube && (
+                    <a
+                      href={selectedProject.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary youtube-btn"
+                    >
+                      <FaYoutube /> YouTube
+                    </a>
+                  )}
                 </div>
+                <div className='modal-section'>
+                <h4>Project Description</h4>
+                <p className="modal-description">{selectedProject.description}</p>
+                </div>
+
+                <div className="modal-section">
+                  <h4>Technologies</h4>
+                  <div className="modal-tech">
+                    {selectedProject.tech.map((tech, i) => (
+                      <span key={i} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {selectedProject.features && selectedProject.features.length > 0 && (
+                  <div className="modal-section">
+                    <h4>Key Features</h4>
+                    <ul className="modal-features">
+                      {selectedProject.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                
               </div>
             </div>
           </div>
