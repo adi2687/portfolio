@@ -25,13 +25,21 @@ main {
 /* Scroll Reveal Animation */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* Reduce animations on mobile */
+@media (max-width: 768px) {
+  .scroll-reveal {
+    transform: translate3d(0, 15px, 0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
 }
 
 /* Grid Pattern Background */

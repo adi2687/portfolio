@@ -11,19 +11,27 @@ import ExperienceTimeline from './components/exp'
 
 function App() {
   useEffect(() => {
-    // Scroll reveal animation
+    // Scroll reveal animation with throttling
+    let ticking = false
+    
     const handleScroll = () => {
-      const elements = document.querySelectorAll('.scroll-reveal')
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top
-        const windowHeight = window.innerHeight
-        if (elementPosition < windowHeight * 0.85) {
-          element.classList.add('revealed')
-        }
-      })
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const elements = document.querySelectorAll('.scroll-reveal:not(.revealed)')
+          elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top
+            const windowHeight = window.innerHeight
+            if (elementPosition < windowHeight * 0.85) {
+              element.classList.add('revealed')
+            }
+          })
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll() // Check on initial load
 
     return () => window.removeEventListener('scroll', handleScroll)

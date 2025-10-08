@@ -6,6 +6,7 @@
   position: relative;
   padding: var(--space-3xl) 0;
   background-color: transparent;
+  margin-top: 1%;
 }
 
 .hero-container {
@@ -130,12 +131,19 @@
   inset: 0;
   border: 2px solid var(--white);
   border-radius: 50%;
-  animation: rotate 20s linear infinite;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Only animate on desktop */
+@media (min-width: 769px) {
+  .hero-image-border {
+    animation: rotate 20s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate3d(0, 0, 1, 0deg); }
+    to { transform: rotate3d(0, 0, 1, 360deg); }
+  }
 }
 
 .hero-image-border::before {
@@ -185,7 +193,6 @@
   border-radius: 12px;
   position: relative;
 }
-
 .scroll-wheel {
   width: 4px;
   height: 8px;
@@ -218,6 +225,9 @@
 
 /* Responsive */
 @media (max-width: 968px) {
+  .hero {
+    margin-top: 1%;
+  }
   .hero-content {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
@@ -254,6 +264,7 @@
 @media (max-width: 768px) {
   .hero {
     padding: var(--space-2xl) 0;
+    margin-top: 9%;
   }
 
   .hero-cta {
