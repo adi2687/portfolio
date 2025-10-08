@@ -2,11 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="logo.png" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="logo.png" />
+
+    <!-- ✅ Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aditya Kurani - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- ✅ Title & Description -->
+    <title>Aditya Kurani | AI & Software Engineer Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Aditya Kurani — AI & software engineer skilled in full-stack development, machine learning, and intelligent assistants like NOVA and Wardrobe AI."
+    />
+
+    <!-- ✅ Keywords (helps a bit for contextual SEO) -->
+    <meta
+      name="keywords"
+      content="Aditya Kurani, AI developer, software engineer, MERN stack, Python, AI assistant, web developer, portfolio"
+    />
+
+    <!-- ✅ Author -->
+    <meta name="author" content="Aditya Kurani" />
+
+    <!-- ✅ Open Graph (for social previews) -->
+    <meta property="og:title" content="Aditya Kurani | AI & Software Engineer" />
+    <meta
+      property="og:description"
+      content="Innovative software engineer building AI assistants and full-stack web apps. Explore projects like NOVA and Wardrobe AI."
+    />
+    <meta property="og:image" content="https://adityakurani.vercel.app/preview.png" />
+    <meta property="og:url" content="https://adityakurani.vercel.app" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aditya Kurani | AI & Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="AI and software engineer creating intelligent digital solutions. Explore my portfolio."
+    />
+    <meta name="twitter:image" content="https://adityakurani.vercel.app/preview.png" />
+
+    <!-- ✅ Schema Markup (helps Google understand your site) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aditya Kurani",
+        "jobTitle": "Software Engineer",
+        "url": "https://adityakurani.vercel.app",
+        "image": "https://adityakurani.vercel.app/logo.png",
+        "sameAs": [
+          "https://github.com/aditya-kurani",
+          "https://linkedin.com/in/aditya-kurani"
+        ],
+        "description": "Innovative AI and software engineer building intelligent assistants and full-stack applications."
+      }
+    </script>
+
+    <!-- ✅ Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
