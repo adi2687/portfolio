@@ -30,6 +30,7 @@ const CardNav = ({
   const { theme, toggleTheme } = useTheme();
 
   const handleThemeToggle = () => {
+    // Immediate theme switching for better responsiveness
     playToggleSound();
     toggleTheme();
   };
@@ -168,7 +169,7 @@ const CardNav = ({
   }, []);
   return (
     <div className={`card-nav-container ${className}`}>
-      <GlassSurface
+      {/* <GlassSurface
         width="100%"
         height="auto"
         borderRadius={12}
@@ -177,7 +178,7 @@ const CardNav = ({
         blur={10}
         // backgroundOpacity={0.1}
         className="nav-glass-wrapper"
-      >
+      > */}
         <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`}>
           <div className="card-nav-top">
           <div
@@ -255,7 +256,7 @@ const CardNav = ({
         </div>
 
         </nav>
-      </GlassSurface>
+      {/* </GlassSurface> */}
       
       <CommandMenu 
         isOpen={isCommandMenuOpen} 

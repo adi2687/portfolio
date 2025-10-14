@@ -16,42 +16,55 @@ const Projects = () => {
       .catch(err => console.error('Error loading projects data:', err))
   }, [])
 
-  // Intersection Observer for video autoplay
+  // Enhanced Intersection Observer for video autoplay
   useEffect(() => {
+    if (videoRefs.current.length === 0) return
+
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.5 // Video must be 50% visible
+      rootMargin: '100px', // Start loading earlier
+      threshold: 0.3 // Play when 30% visible
     }
 
     const observerCallback = (entries) => {
       entries.forEach(entry => {
         const video = entry.target
         if (entry.isIntersecting) {
-          // Video is visible, play it
-          video.play().catch(err => console.log('Video play failed:', err))
-        } else {
-          // Video is not visible, pause it
+          // Pause other videos for better performance
+          videoRefs.current.forEach(v => {
+            if (v !== video && v) v.pause()
+          })
+          
+          // Try to play the video
+          if (video) {
+            video.play().catch((error) => {
+              console.log('Video autoplay failed:', error)
+              // If autoplay fails, try again after user interaction
+              const playOnInteraction = () => {
+                video.play().catch(() => {})
+                document.removeEventListener('click', playOnInteraction)
+                document.removeEventListener('scroll', playOnInteraction)
+              }
+              document.addEventListener('click', playOnInteraction, { once: true })
+              document.addEventListener('scroll', playOnInteraction, { once: true })
+            })
+          }
+        } else if (video) {
           video.pause()
         }
       })
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    // Observe all video elements
+    
+    // Setup observer immediately
     videoRefs.current.forEach(video => {
-      if (video) {
-        observer.observe(video)
-      }
+      if (video) observer.observe(video)
     })
 
-    // Cleanup
     return () => {
       videoRefs.current.forEach(video => {
-        if (video) {
-          observer.unobserve(video)
-        }
+        if (video) observer.unobserve(video)
       })
     }
   }, [projectsData])
@@ -75,6 +88,18 @@ const Projects = () => {
   const addVideoRef = (el) => {
     if (el && !videoRefs.current.includes(el)) {
       videoRefs.current.push(el)
+      
+      // Try to play video immediately if it's in viewport
+      const rect = el.getBoundingClientRect()
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
+      
+      if (isInViewport) {
+        setTimeout(() => {
+          el.play().catch(() => {
+            console.log('Video autoplay failed, user interaction required')
+          })
+        }, 500)
+      }
     }
   }
 
@@ -127,16 +152,41 @@ const Projects = () => {
                 >
                   <div className="project-image">
                     {project.isVideo || project.video ? (
-                      <video
-                        ref={addVideoRef}
-                        src={project.video || project.image}
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                      />
+                      <div className="video-container">
+                        <video
+                          ref={addVideoRef}
+                          src={project.video || project.image}
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          autoPlay
+                          poster={project.image}
+                          className="project-video"
+                        />
+                        <button 
+                          className="video-play-btn"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            const video = e.target.previousElementSibling
+                            if (video.paused) {
+                              video.play()
+                            } else {
+                              video.pause()
+                            }
+                          }}
+                          aria-label="Play/Pause video"
+                        >
+                          <FaPlay />
+                        </button>
+                      </div>
                     ) : (
-                      <img src={project.image} alt={project.title} />
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     )}
                   </div>
                   <div className="project-content">

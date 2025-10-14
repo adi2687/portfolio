@@ -271,6 +271,8 @@
   gap: var(--space-xl);
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card {
@@ -417,6 +419,87 @@
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   filter: grayscale(0.2) contrast(1.1); 
+}
+
+/* Enhanced video styles for better playback */
+.project-video {
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.project-video:hover {
+  transform: scale(1.02);
+}
+
+/* Video loading state */
+.project-video:not([poster]) {
+  background: linear-gradient(45deg, var(--bg-secondary) 25%, transparent 25%),
+              linear-gradient(-45deg, var(--bg-secondary) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, var(--bg-secondary) 75%),
+              linear-gradient(-45deg, transparent 75%, var(--bg-secondary) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: video-loading 1s linear infinite;
+}
+
+@keyframes video-loading {
+  0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+  100% { background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; }
+}
+
+/* Video container and controls */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--white);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.video-play-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.video-container:hover .video-play-btn {
+  opacity: 1;
+}
+
+.video-play-btn:not(:hover) {
+  opacity: 0.8;
+}
+
+/* Hide play button when video is playing */
+.video-container:has(video:not([paused])) .video-play-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-container:has(video:not([paused])):hover .video-play-btn {
+  opacity: 0.8;
+  pointer-events: auto;
 }
 
 .project-card:hover .project-image img,

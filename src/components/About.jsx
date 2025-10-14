@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import './About.css'
 
 const About = () => {
@@ -9,43 +9,56 @@ const About = () => {
   const [projectslength, setProjectslength] = useState(0)
   const [projectsData, setProjectsData] = useState([])
   const [questions, setQuestions] = useState(0)
+  
+  // Load data with intersection observer for better performance
   useEffect(() => {
-    // Load about data
-    fetch('/data/about.json')
-      .then(res => res.json())
-      .then(data => setAboutData(data))
-      .catch(err => console.error('Error loading about data:', err))
-
-    // Load skills data
-    fetch('/data/skills.json')
-      .then(res => res.json())
-      .then(data => setSkillsData(data.filter(skill => skill.name)))
-      .catch(err => console.error('Error loading skills data:', err))
-
-    // Load awards data
-    fetch('/data/awards.json')
-      .then(res => res.json())
-      .then(data => setAwardsData(data))
-      .catch(err => console.error('Error loading awards data:', err))
-
-    // Load timeline data
-    fetch('/data/timeline.json')
-      .then(res => res.json())
-      .then(data => {
-        setTimelineData(data[0].education)
-        setQuestions(data[1].questions)
-
-      })
-      .catch(err => console.error('Error loading timeline data:', err))
-
-    // Load projects data
-    fetch('/data/projects.json')
-      .then(res => res.json())
-      .then(data => {
-        setProjectsData(data)
-        setProjectslength(data.length)
-      })
-      .catch(err => console.error('Error loading projects data:', err))
+    const loadData = async () => {
+      try {
+        const [aboutRes, skillsRes, awardsRes, timelineRes, projectsRes] = await Promise.all([
+          fetch('/data/about.json'),
+          fetch('/data/skills.json'),
+          fetch('/data/awards.json'),
+          fetch('/data/timeline.json'),
+          fetch('/data/projects.json')
+        ])
+        
+        const [about, skills, awards, timeline, projects] = await Promise.all([
+          aboutRes.json(),
+          skillsRes.json(),
+          awardsRes.json(),
+          timelineRes.json(),
+          projectsRes.json()
+        ])
+        
+        setAboutData(about)
+        setSkillsData(skills.filter(skill => skill.name))
+        setAwardsData(awards)
+        setTimelineData(timeline[0].education)
+        setQuestions(timeline[1].questions)
+        setProjectsData(projects)
+        setProjectslength(projects.length)
+      } catch (err) {
+        console.error('Error loading data:', err)
+      }
+    }
+    
+    // Delay loading until component is visible
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadData()
+        observer.disconnect()
+      }
+    })
+    
+    const aboutSection = document.getElementById('about')
+    if (aboutSection) {
+      observer.observe(aboutSection)
+    } else {
+      // Fallback if section not found
+      loadData()
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   return (

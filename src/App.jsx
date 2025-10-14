@@ -1,40 +1,58 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import './App.css'
 import Hero from './components/Hero'
 import About from './components/About'
-import Projects from './components/Projects'
 import Contact from './components/Contact'
 import CardNav from './ui/navbar'
-import Pixel from './ui/Pixel'
 import ScrollProgress from './components/ScrollProgress'
 import ExperienceTimeline from './components/exp'
+import { measurePerformance, optimizeResourceLoading, monitorBundleSize } from './utils/performance'
+import { preloadAllAudio } from './utils/sounds'
+
+// Lazy load heavy components
+const Projects = lazy(() => import('./components/Projects'))
+// Import Pixel directly for immediate loading
+// import Pixel from './ui/Pixel'
 
 function App() {
   useEffect(() => {
-    // Scroll reveal animation with throttling
-    let ticking = false
+    // Initialize performance monitoring
+    measurePerformance()
+    optimizeResourceLoading()
+    monitorBundleSize()
     
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const elements = document.querySelectorAll('.scroll-reveal:not(.revealed)')
-          elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top
-            const windowHeight = window.innerHeight
-            if (elementPosition < windowHeight * 0.85) {
-              element.classList.add('revealed')
-            }
-          })
-          ticking = false
+    // Preload audio files on user interaction
+    preloadAllAudio()
+
+    // Optimized scroll reveal animation
+    const elements = document.querySelectorAll('.scroll-reveal:not(.revealed)')
+    
+    if (elements.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed')
+            observer.unobserve(entry.target)
+          }
         })
-        ticking = true
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
       }
+    )
+
+    // Throttle observer setup for better performance
+    const timeoutId = setTimeout(() => {
+      elements.forEach(element => observer.observe(element))
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      observer.disconnect()
     }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Check on initial load
-
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const navItems = [
@@ -68,9 +86,9 @@ function App() {
   ]
   return (
     <>
-    <div className="global-pixel-background">
+    {/* <div className="global-pixel-background">
         <Pixel />
-    </div>
+    </div> */}
     
     {/* Scroll Progress Indicator */}
     <ScrollProgress />
@@ -88,7 +106,9 @@ function App() {
         <Hero />
         <ExperienceTimeline />
         <About />
-        <Projects />
+        <Suspense fallback={<div className="projects-loading">Loading projects...</div>}>
+          <Projects />
+        </Suspense>
         <Contact />
     </div>
     </>

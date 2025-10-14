@@ -7,6 +7,10 @@
   width: 90%;
   max-width: 600px;
   z-index: 1000;
+  /* border:2px solid grey; */
+  /* border-radius: 20px; */
+  /* background-color: rgba(0, 0, 0, 0.1);  */
+  backdrop-filter: blur(10px);
 }
 
 .nav-glass-wrapper {

@@ -1,12 +1,14 @@
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { useTheme } from '../context/ThemeContext'
-import { playToggleSound } from '../utils/sounds'
+import { playToggleSound, prefetchAudio } from '../utils/sounds'
 import './ThemeToggle.css'
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme()
 
   const handleToggle = () => {
+    // Prefetch audio files for better performance
+    prefetchAudio()
     playToggleSound()
     toggleTheme()
   }

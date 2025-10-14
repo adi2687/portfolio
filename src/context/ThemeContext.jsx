@@ -16,21 +16,20 @@ export const ThemeProvider = ({ children }) => {
     const savedTheme = localStorage.getItem('theme')
     return savedTheme || 'dark'
   })
-  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
-    // Apply theme to document
+    // Apply theme to document immediately for better responsiveness
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }, [theme])
 
   const toggleTheme = () => {
-    // Change theme instantly
+    // Immediate theme switching for better responsiveness
     setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark')
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   )

@@ -39,16 +39,77 @@ export const playClickSound = () => {
   }
 }
 
+// Audio prefetching cache
+const audioCache = new Map()
+
+/**
+ * Prefetches audio files for better performance
+ * Caches audio objects to avoid reloading on subsequent plays
+ */
+export const prefetchAudio = () => {
+  const audioFiles = [
+    '/switch.mp3',
+    '/iron-man-repulsor-157371 (3).mp3',
+    '/missile.mp3'
+  ]
+
+  audioFiles.forEach(audioSrc => {
+    if (!audioCache.has(audioSrc)) {
+      try {
+        const audio = new Audio(audioSrc)
+        audio.preload = 'auto'
+        audio.volume = 0.5
+        
+        // Cache the audio object
+        audioCache.set(audioSrc, audio)
+        
+        // Preload by setting source and loading
+        audio.load()
+        
+        console.log(`🎵 Prefetched audio: ${audioSrc}`)
+      } catch (error) {
+        console.log(`Failed to prefetch audio: ${audioSrc}`, error)
+      }
+    }
+  })
+}
+
 /**
  * Plays the switch sound from audio file
- * Uses the switch.mp3 file for realistic toggle sound
+ * Uses cached audio if available for better performance
  */
 export const playToggleSound = () => {
   try {
-    const audio = new Audio('/switch.mp3')
+    const audioSrc = '/switch.mp3'
+    let audio = audioCache.get(audioSrc)
+    
+    if (!audio) {
+      audio = new Audio(audioSrc)
+      audioCache.set(audioSrc, audio)
+    }
+    
     audio.volume = 0.5 // Set volume to 50%
+    audio.currentTime = 0 // Reset to beginning
     audio.play().catch(err => console.log('Audio play failed:', err))
   } catch (error) {
     console.log('Audio not supported:', error)
+  }
+}
+
+/**
+ * Preloads all audio files on component mount
+ * Call this in useEffect for better user experience
+ */
+export const preloadAllAudio = () => {
+  if (typeof window !== 'undefined') {
+    // Prefetch on user interaction to respect browser autoplay policies
+    const preloadOnInteraction = () => {
+      prefetchAudio()
+      document.removeEventListener('click', preloadOnInteraction)
+      document.removeEventListener('touchstart', preloadOnInteraction)
+    }
+    
+    document.addEventListener('click', preloadOnInteraction, { once: true })
+    document.addEventListener('touchstart', preloadOnInteraction, { once: true })
   }
 }
