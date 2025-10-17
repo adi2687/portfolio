@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaGoogle, FaGamepad, FaRocket, FaPlay } from 'react-icons/fa'
 import './Hero.css'
-import me from '/metesting.jpg'
-
+import me from '/me.jpg'
+import {useTheme} from '../context/ThemeContext'
 // Preload the hero image
 const heroImage = new Image()
 heroImage.src = me
@@ -15,6 +15,8 @@ const Hero = () => {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const {theme} = useTheme()
 
   return (
     <section id="home" className="hero">
@@ -73,7 +75,8 @@ const Hero = () => {
           {/* Right Column - Visual Content */}
           <div className="hero-visual">
             <div className="hero-image-wrapper">
-              <div className="hero-image-border"></div>
+              
+              <div className={`${theme==="dark" ? "hero-image-border" : "hero-image-border light"}`}></div>
               <img
                 src={me}
                 alt="Aditya Kurani"

@@ -6,20 +6,20 @@ import Contact from './components/Contact'
 import CardNav from './ui/navbar'
 import ScrollProgress from './components/ScrollProgress'
 import ExperienceTimeline from './components/exp'
-import { measurePerformance, optimizeResourceLoading, monitorBundleSize } from './utils/performance'
+// import { measurePerformance, optimizeResourceLoading, monitorBundleSize } from './utils/performance'
 import { preloadAllAudio } from './utils/sounds'
 
 // Lazy load heavy components
 const Projects = lazy(() => import('./components/Projects'))
 // Import Pixel directly for immediate loading
-// import Pixel from './ui/Pixel'
+import Pixel from './ui/Pixel'
 
 function App() {
   useEffect(() => {
     // Initialize performance monitoring
-    measurePerformance()
-    optimizeResourceLoading()
-    monitorBundleSize()
+    // measurePerformance()
+    // optimizeResourceLoading()
+    // monitorBundleSize()
     
     // Preload audio files on user interaction
     preloadAllAudio()
@@ -86,9 +86,9 @@ function App() {
   ]
   return (
     <>
-    {/* <div className="global-pixel-background">
+     <div className="global-pixel-background">
         <Pixel />
-    </div> */}
+    </div> 
     
     {/* Scroll Progress Indicator */}
     <ScrollProgress />

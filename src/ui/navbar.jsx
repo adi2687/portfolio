@@ -2,11 +2,10 @@ import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
-import { FaSearch, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
+import { FaSearch, FaSun, FaMoon } from 'react-icons/fa';
 import CommandMenu from '../components/CommandMenu';
 import { useTheme } from '../context/ThemeContext';
 import { playToggleSound } from '../utils/sounds';
-import GlassSurface from './GlassSurface.';
 import './CardNav.css';
 
 const CardNav = ({
